@@ -1,4 +1,4 @@
-FROM openjdk:11-slim
+FROM openjdk:11-slim AS builder
 COPY app/build.gradle app/gradlew /app/
 COPY app/gradle /app/gradle
 WORKDIR /app
