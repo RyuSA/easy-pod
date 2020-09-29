@@ -1,6 +1,5 @@
 FROM openjdk:11-slim AS builder
-COPY app/build.gradle app/gradlew /app/
-COPY app/gradle /app/gradle
+COPY app/ /app/
 WORKDIR /app
 RUN ["./gradlew", "build", "-x", "test"]
 
