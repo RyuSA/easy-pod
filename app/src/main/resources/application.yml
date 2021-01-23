@@ -1,7 +1,7 @@
 management:
   endpoint:
     shutdown:
-        enabled: true
+      enabled: true
   endpoints:
     web:
       exposure:
@@ -9,3 +9,8 @@ management:
   health:
     probes:
       enabled: true
+
+spring.lifecycle.timeout-per-shutdown-phase: ${SHUTDOWN_TIMEOUT:1s}
+
+server:
+  shutdown: ${SHUTDOWN:immediate}
