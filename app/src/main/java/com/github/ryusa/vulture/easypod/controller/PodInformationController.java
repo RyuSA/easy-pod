@@ -17,34 +17,46 @@ import org.springframework.web.bind.annotation.RestController;
 public class PodInformationController {
 
     private final ApplicationEventPublisher eventPublisher;
+    private final String osName;
+    private final String hostname;
+    private final String ipAddress;
 
     public PodInformationController(ApplicationEventPublisher eventPublisher) {
         this.eventPublisher = eventPublisher;
+        this.osName = System.getProperty("os.name").toLowerCase();
+
+        String hostname;
+        try {
+            hostname =          InetAddress.getLocalHost().getHostName();
+        } catch (Exception e) {
+            e.printStackTrace();
+            hostname = "failed to get hostname";
+        }
+        this.hostname = hostname;
+
+        String ipAddress;
+        try {
+            ipAddress = InetAddress.getLocalHost().getHostAddress();
+        } catch (Exception e) {
+            e.printStackTrace();
+            ipAddress = "failed to get hostname";
+        }
+        this.ipAddress = ipAddress;
     }
 
     @GetMapping(path = "/os")
     public String os() {
-        return System.getProperty("os.name").toLowerCase();
+        return this.osName;
     }
 
     @GetMapping(path = "/hostname")
     public String hostname() {
-        try {
-            return InetAddress.getLocalHost().getHostName();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "failed to get hostname";
+        return this.hostname;
     }
 
     @GetMapping(path = "/ipaddr")
     public String ipaddr() {
-        try {
-            return InetAddress.getLocalHost().getHostAddress();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return "failed to get hostname";
+        return this.ipAddress;
     }
 
     @GetMapping(path = "/sleep")
@@ -103,5 +115,4 @@ public class PodInformationController {
         }
         return "done";
     }
-
 }
