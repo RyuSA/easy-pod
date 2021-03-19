@@ -9,10 +9,10 @@ import org.springframework.boot.web.embedded.tomcat.TomcatServletWebServerFactor
 
 @Configuration
 public class TomcatConfiguration {
-    @Bean
-    public TomcatServletWebServerFactory servletContainer() {
-        TomcatServletWebServerFactory tomcatServletWebServerFactory = new TomcatServletWebServerFactory();
-        tomcatServletWebServerFactory.addContextValves(new LogbackValve());
-        return tomcatServletWebServerFactory;
-    }    
+	@Bean
+	public TomcatServletWebServerFactory servletContainer() {
+		TomcatServletWebServerFactory tomcatServletWebServerFactory = new TomcatServletWebServerFactory();
+		tomcatServletWebServerFactory.addContextValves(new LogbackValve());
+		return tomcatServletWebServerFactory;
+	}
 }
