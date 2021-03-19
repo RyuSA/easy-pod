@@ -52,6 +52,10 @@ docker run -e SHUTDOWN=graceful \
   - 例
     - 1s(デフォルト)
     - 10m
+- `META_PORT`
+  - アプリケーションのメタ情報を取得するためのポートを設定できます
+    - このポート番号はSpringActuatorのポートへマッピングされます
+    - デフォルト値 8080
 
 ### Endpoints
 
