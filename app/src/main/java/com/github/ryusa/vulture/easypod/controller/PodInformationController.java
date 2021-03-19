@@ -1,4 +1,4 @@
-package com.example.demo.controller;
+package com.github.ryusa.vulture.easypod.controller;
 
 import java.net.InetAddress;
 import org.springframework.boot.availability.AvailabilityChangeEvent;
