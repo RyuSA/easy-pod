@@ -1,5 +1,5 @@
 FROM gradle:6.7.1-jdk11 AS builder
-COPY build.gradle setting.gradle /app/
+COPY build.gradle settings.gradle /app/
 COPY src/ /app/src
 WORKDIR /app
 RUN ["gradle", "build", "-x", "test"]
